@@ -1,0 +1,17 @@
+{% extends "polls/base.html" %}
+
+{% block title %}Войти{% endblock %}
+
+{% block content %}
+   <form action="/login/" method="post">
+       {% csrf_token %}
+
+       {{ form }}
+
+       <p><input type="submit" value="Login"></p>
+
+       <p>
+           <a href="/sign-up/">Создать аккаунт</a>
+       </p>
+   </form>
+{% endblock %}

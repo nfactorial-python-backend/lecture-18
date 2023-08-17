@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "sandbox-django"
+version = "0.1.0"
+description = ""
+authors = ["Alimukhamed Tlekbai <ali.tlekbai@gmail.com>"]
+readme = "README.md"
+packages = [{include = "sandbox_django"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.4"
+django-debug-toolbar = "^4.1.0"
+djangorestframework = "^3.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

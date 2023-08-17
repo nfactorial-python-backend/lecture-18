@@ -1,0 +1,32 @@
+{% extends "polls/base.html" %}
+
+{% block title %} Список вопросов {% endblock %}
+
+{% block content %}
+    <ol>
+        {% for question in questions %}
+            <div class="card mt-2">
+                <div class="card-header"><strong>@{{ question.author.username }}</strong></div>
+                <div class="card-body d-flex flex-row justify-content-between">
+                  <div>
+                    <h5 class="card-title">
+                        <a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a>
+                    </h5>
+                  </div>
+                  <div>
+                    {% if user == question.author or perms.polls.delete_question %}
+                        <form action="{% url 'polls:delete' question.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger" >Удалить</button>
+                        </form>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="card-footer text-muted">{{question.pub_date}}</div>
+              </div>
+
+        {% empty %}
+            <p>Нет голосований</p>
+        {% endfor %}
+    </ol>
+{% endblock %}
